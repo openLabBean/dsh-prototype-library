@@ -2333,6 +2333,15 @@ window.__ModuleLoader__.load({
             async serialize(ref) {
               const value = decodeRef(ref)
               if (!value) return ref
+              const launchOf = (item) => {
+                if (!item || !item.command) {
+                  if (!item) return '自动识别'
+                  if (item.kind === 'static') return '内置静态文件服务'
+                  if (item.kind === 'vite') return 'Vite 开发服务器'
+                  return '自动识别'
+                }
+                return item.kind === 'vite' ? 'npm run dev（Vite）' : 'npm run dev'
+              }
               let detail = null
               try {
                 const response = await fetch(`${API}/prototypes/${encodeURIComponent(value.id)}`, { cache: 'no-store' })
@@ -2342,22 +2351,20 @@ window.__ModuleLoader__.load({
               }
               if (!detail || !detail.prototype) {
                 const cached = cache.items.find((item) => item.id === value.id)
-                return `原型：${value.name}${cached && cached.dir ? `\n目录：${cached.dir}` : ''}`
+                return [
+                  `原型：${value.name}`,
+                  `项目：${(cached && cached.project) || t('ungrouped')}`,
+                  `目录：${(cached && cached.dir) || '未知'}`,
+                  `启动方式：${launchOf(cached)}`,
+                ].join('\n')
               }
               const prototype = detail.prototype
-              const git = detail.git || {}
-              const lines = [
+              return [
                 `原型：${prototype.name}`,
                 `项目：${prototype.project || t('ungrouped')}`,
                 `目录：${prototype.dir}`,
-                `类型：${kindLabel(prototype.kind)}`,
-              ]
-              if (git.hasGit) {
-                lines.push(`分支：${git.branch || 'detached HEAD'}`)
-                if (git.changedCount) lines.push(`工作区：有 ${git.changedCount} 个未提交改动`)
-              }
-              if (prototype.repoUrl || git.remoteUrl) lines.push(`仓库：${prototype.repoUrl || git.remoteUrl}`)
-              return lines.join('\n')
+                `启动方式：${launchOf(prototype)}`,
+              ].join('\n')
             },
           },
           openReference(session, reference) {
