@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #07080B; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  color: #F2F4F8; -webkit-font-smoothing: antialiased;
+}
+.stage {
+  position: relative; width: 1280px; overflow: hidden;
+  background:
+    radial-gradient(900px 460px at 12% -10%, rgba(68,126,253,.20), transparent 60%),
+    radial-gradient(700px 420px at 92% 108%, rgba(68,126,253,.12), transparent 62%),
+    linear-gradient(160deg, #0D0F15 0%, #0A0B10 55%, #0B0D13 100%);
+}
+.grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(760px 420px at 30% 10%, #000 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(760px 420px at 30% 10%, #000 30%, transparent 78%);
+}
+.icon { width: 56px; height: 56px; border-radius: 14px; display: block; }
+.brand { display: flex; align-items: center; gap: 16px; }
+.brand-txt { display: flex; flex-direction: column; gap: 3px; }
+.brand-kicker { font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; color: #7E8AA0; font-weight: 600; }
+.brand-name { font-size: 17px; font-weight: 600; color: #DDE3EE; letter-spacing: .01em; }
+.chip {
+  display: inline-flex; align-items: center; gap: 7px; height: 30px; padding: 0 13px;
+  border-radius: 999px; border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.035); color: #C6CEDA; font-size: 13px; font-weight: 500;
+}
+.chip i { width: 5px; height: 5px; border-radius: 50%; background: #447EFD; display: block; }
+.accent { color: #6C9BFF; }
+
+.card {
+  position: relative; width: 252px; border-radius: 14px; overflow: hidden;
+  background: #14161D; border: 1px solid rgba(255,255,255,.09);
+  box-shadow: 0 24px 60px rgba(0,0,0,.55);
+}
+.thumb { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+.thumb .bar { position: absolute; inset: 0; }
+.status {
+  position: absolute; left: 10px; top: 10px; display: inline-flex; align-items: center; gap: 6px;
+  height: 22px; padding: 0 9px; border-radius: 999px; font-size: 11px; color: #fff;
+  background: rgba(20,20,20,.6); backdrop-filter: blur(6px);
+}
+.status .dot { width: 6px; height: 6px; border-radius: 50%; background: #37D39B; }
+.pin {
+  position: absolute; right: 10px; top: 10px; width: 22px; height: 22px; border-radius: 999px;
+  background: #447EFD; display: flex; align-items: center; justify-content: center; color: #fff;
+}
+.body { padding: 13px 14px 15px; display: flex; flex-direction: column; gap: 10px; }
+.title { display: flex; align-items: center; gap: 8px; font-size: 14.5px; font-weight: 600; }
+.chev { margin-left: auto; color: #6B7688; font-size: 15px; }
+.meta { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: #8C97A8; }
+.meta .tag { padding: 2px 7px; border-radius: 5px; border: 1px solid rgba(255,255,255,.10); }
+.branch {
+  display: flex; align-items: center; gap: 8px; height: 29px; padding: 0 10px; border-radius: 7px;
+  border: 1px solid rgba(255,255,255,.10); background: #0D0F15; color: #B9C2D0;
+  font-family: ui-monospace, Menlo, monospace; font-size: 11.5px;
+}
+.branch .caret { margin-left: auto; color: #6B7688; }
+.actions { display: flex; gap: 7px; margin-top: 2px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 29px; padding: 0 11px; border-radius: 7px;
+  font-size: 12px; font-weight: 500; color: #C9D2E0; border: 1px solid rgba(255,255,255,.12); background: transparent;
+}
+.btn.primary { background: #447EFD; border-color: #447EFD; color: #fff; }
+.dotbtn { width: 9px; height: 9px; border-radius: 50%; background: #fff; display: inline-block; }
+
+.stage { height: 680px; padding: 58px 64px 0; }
+.hero { position: relative; z-index: 2; display: flex; justify-content: space-between; gap: 40px; }
+.left { max-width: 720px; padding-top: 46px; }
+.h1 { font-size: 54px; line-height: 1.06; font-weight: 700; letter-spacing: -.015em; margin-top: 30px; }
+.h1 .en { display: block; font-size: 20px; font-weight: 500; letter-spacing: .02em; color: #77839A; margin-top: 12px; }
+.tagline { margin-top: 22px; font-size: 29px; line-height: 1.42; font-weight: 600; color: #E8EDF6; }
+.tagline .hl { color: #6C9BFF; }
+.sub { margin-top: 16px; font-size: 15px; line-height: 1.75; color: #98A2B3; max-width: 620px; }
+.chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 28px; }
+.right { position: relative; width: 380px; flex: none; margin-top: 40px; }
+.mini { position: absolute; right: 26px; }
+.mini.a { top: 214px; right: 118px; transform: rotate(-7deg) scale(.9); opacity: .45; filter: blur(.6px); }
+.mini.b { top: 8px; right: 0; transform: rotate(2deg); }
+.foot { position: absolute; left: 64px; bottom: 30px; font-size: 12px; color: #5E6980; letter-spacing: .04em; }
+</style></head><body><div class="stage">
+  <div class="grid"></div>
+  <div class="hero">
+    <div class="left">
+      <div class="brand"><img class="icon" src="icon.svg"><div class="brand-txt">
+        <span class="brand-kicker">DSH plugin · for product managers</span><span class="brand-name">DeepSeek Harness</span></div></div>
+      <div class="h1">Prototype Library<span class="en">Turn prototypes into product assets</span></div>
+      <div class="tagline">Keep every AI-built prototype<br><span class="hl">maintainable and reusable</span>.</div>
+      <div class="sub">One workspace for local frontend prototypes: filter by project and runtime, start a preview in a click, organize design options with Git branches, and keep iterating with AI by @-mentioning a prototype in chat.</div>
+      <div class="chips"><span class="chip"><i></i>One workspace</span><span class="chip"><i></i>One-click run</span><span class="chip"><i></i>Branch-based</span><span class="chip"><i></i>@ mention in chat</span></div>
+    </div>
+    <div class="right">
+      <div class="mini a"><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#1B2233 0%,#10141D 55%,#151A24 100%)"><div class="bar" style="background:radial-gradient(220px 120px at 26% 18%, rgba(68,126,253,.30), transparent 70%)"></div><div class="status"><span class="dot" style="background:#8E99AB"></span>Idle</div></div><div class="body"><div class="title">Executive Insight Agent<span class="chev">&#8250;</span></div><div class="meta"><span class="tag">International</span><span>Vite · 3h ago</span></div><div class="branch">origin/main<span class="caret">&#9662;</span></div><div class="actions"><span class="btn primary"><span class="dotbtn"></span>Start</span><span class="btn">Preview</span></div></div></div></div>
+      <div class="mini b"><div class="card"><div class="thumb" style="background:linear-gradient(135deg,#1B2233 0%,#10141D 55%,#151A24 100%)"><div class="bar" style="background:radial-gradient(220px 120px at 26% 18%, rgba(68,126,253,.30), transparent 70%)"></div><div class="status"><span class="dot" style="background:#37D39B"></span>Running</div><div class="pin">&#8226;</div></div><div class="body"><div class="title">DataPilot Consumer<span class="chev">&#8250;</span></div><div class="meta"><span class="tag">DataPilot</span><span>Vite · 3h ago</span></div><div class="branch">D3.0.0<span class="caret">&#9662;</span></div><div class="actions"><span class="btn primary"><span class="dotbtn"></span>Start</span><span class="btn">Preview</span></div></div></div></div>
+    </div>
+  </div>
+  <div class="foot">v1.0 · data stays local · loopback-only API</div>
+</div></body></html>

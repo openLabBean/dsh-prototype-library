@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #07080B; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  color: #F2F4F8; -webkit-font-smoothing: antialiased;
+}
+.stage {
+  position: relative; width: 1280px; overflow: hidden;
+  background:
+    radial-gradient(900px 460px at 12% -10%, rgba(68,126,253,.20), transparent 60%),
+    radial-gradient(700px 420px at 92% 108%, rgba(68,126,253,.12), transparent 62%),
+    linear-gradient(160deg, #0D0F15 0%, #0A0B10 55%, #0B0D13 100%);
+}
+.grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(760px 420px at 30% 10%, #000 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(760px 420px at 30% 10%, #000 30%, transparent 78%);
+}
+.icon { width: 56px; height: 56px; border-radius: 14px; display: block; }
+.brand { display: flex; align-items: center; gap: 16px; }
+.brand-txt { display: flex; flex-direction: column; gap: 3px; }
+.brand-kicker { font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; color: #7E8AA0; font-weight: 600; }
+.brand-name { font-size: 17px; font-weight: 600; color: #DDE3EE; letter-spacing: .01em; }
+.chip {
+  display: inline-flex; align-items: center; gap: 7px; height: 30px; padding: 0 13px;
+  border-radius: 999px; border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.035); color: #C6CEDA; font-size: 13px; font-weight: 500;
+}
+.chip i { width: 5px; height: 5px; border-radius: 50%; background: #447EFD; display: block; }
+.accent { color: #6C9BFF; }
+
+.stage { height: 400px; padding: 54px 64px; }
+.t { position: relative; z-index: 2; font-size: 30px; font-weight: 700; }
+.s { position: relative; z-index: 2; font-size: 13.5px; color: #8D97A8; margin-top: 9px; }
+.steps { position: relative; z-index: 2; display: flex; gap: 16px; margin-top: 44px; }
+.line { position: absolute; left: 40px; right: 40px; top: 21px; height: 1px; background: linear-gradient(90deg, rgba(68,126,253,.55), rgba(68,126,253,.12)); }
+.step { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.num { width: 42px; height: 42px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
+        font-size: 14px; font-weight: 600; color: #CFE0FF; background: rgba(68,126,253,.16);
+        border: 1px solid rgba(68,126,253,.42); position: relative; z-index: 2; }
+.step h4 { font-size: 15.5px; font-weight: 600; }
+.step p { font-size: 12.6px; line-height: 1.7; color: #8F99AA; }
+</style></head><body><div class="stage">
+  <div class="grid"></div>
+  <div class="t">Five steps from prompt to product asset</div><div class="s">Prototypes stop being one-off demos and become assets you can keep iterating</div>
+  <div class="steps"><div class="line"></div><div class="step"><div class="num">01</div><h4>Generate</h4><p>Ask AI for a local Vite project or a static HTML prototype.</p></div><div class="step"><div class="num">02</div><h4>Register</h4><p>Add the folder, a clear name, its project, and a thumbnail.</p></div><div class="step"><div class="num">03</div><h4>Preview</h4><p>Start from the card, get a free port, and demo instantly.</p></div><div class="step"><div class="num">04</div><h4>Iterate</h4><p>Branch per design option and @-mention it in chat.</p></div><div class="step"><div class="num">05</div><h4>Commit</h4><p>Commit and push so the prototype becomes traceable.</p></div></div>
+</div></body></html>

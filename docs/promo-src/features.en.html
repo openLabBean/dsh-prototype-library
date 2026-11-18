@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #07080B; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  color: #F2F4F8; -webkit-font-smoothing: antialiased;
+}
+.stage {
+  position: relative; width: 1280px; overflow: hidden;
+  background:
+    radial-gradient(900px 460px at 12% -10%, rgba(68,126,253,.20), transparent 60%),
+    radial-gradient(700px 420px at 92% 108%, rgba(68,126,253,.12), transparent 62%),
+    linear-gradient(160deg, #0D0F15 0%, #0A0B10 55%, #0B0D13 100%);
+}
+.grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(760px 420px at 30% 10%, #000 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(760px 420px at 30% 10%, #000 30%, transparent 78%);
+}
+.icon { width: 56px; height: 56px; border-radius: 14px; display: block; }
+.brand { display: flex; align-items: center; gap: 16px; }
+.brand-txt { display: flex; flex-direction: column; gap: 3px; }
+.brand-kicker { font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; color: #7E8AA0; font-weight: 600; }
+.brand-name { font-size: 17px; font-weight: 600; color: #DDE3EE; letter-spacing: .01em; }
+.chip {
+  display: inline-flex; align-items: center; gap: 7px; height: 30px; padding: 0 13px;
+  border-radius: 999px; border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.035); color: #C6CEDA; font-size: 13px; font-weight: 500;
+}
+.chip i { width: 5px; height: 5px; border-radius: 50%; background: #447EFD; display: block; }
+.accent { color: #6C9BFF; }
+
+.card {
+  position: relative; width: 268px; border-radius: 14px; overflow: hidden;
+  background: #14161D; border: 1px solid rgba(255,255,255,.09);
+  box-shadow: 0 24px 60px rgba(0,0,0,.55);
+}
+.thumb { position: relative; aspect-ratio: 16/10; overflow: hidden; }
+.thumb .bar { position: absolute; inset: 0; }
+.status {
+  position: absolute; left: 10px; top: 10px; display: inline-flex; align-items: center; gap: 6px;
+  height: 22px; padding: 0 9px; border-radius: 999px; font-size: 11px; color: #fff;
+  background: rgba(20,20,20,.6); backdrop-filter: blur(6px);
+}
+.status .dot { width: 6px; height: 6px; border-radius: 50%; background: #37D39B; }
+.pin {
+  position: absolute; right: 10px; top: 10px; width: 22px; height: 22px; border-radius: 999px;
+  background: #447EFD; display: flex; align-items: center; justify-content: center; color: #fff;
+}
+.body { padding: 13px 14px 15px; display: flex; flex-direction: column; gap: 10px; }
+.title { display: flex; align-items: center; gap: 8px; font-size: 14.5px; font-weight: 600; }
+.chev { margin-left: auto; color: #6B7688; font-size: 15px; }
+.meta { display: flex; align-items: center; gap: 7px; font-size: 11.5px; color: #8C97A8; }
+.meta .tag { padding: 2px 7px; border-radius: 5px; border: 1px solid rgba(255,255,255,.10); }
+.branch {
+  display: flex; align-items: center; gap: 8px; height: 29px; padding: 0 10px; border-radius: 7px;
+  border: 1px solid rgba(255,255,255,.10); background: #0D0F15; color: #B9C2D0;
+  font-family: ui-monospace, Menlo, monospace; font-size: 11.5px;
+}
+.branch .caret { margin-left: auto; color: #6B7688; }
+.actions { display: flex; gap: 7px; margin-top: 2px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px; height: 29px; padding: 0 11px; border-radius: 7px;
+  font-size: 12px; font-weight: 500; color: #C9D2E0; border: 1px solid rgba(255,255,255,.12); background: transparent;
+}
+.btn.primary { background: #447EFD; border-color: #447EFD; color: #fff; }
+.dotbtn { width: 9px; height: 9px; border-radius: 50%; background: #fff; display: inline-block; }
+
+.stage { height: 860px; padding: 56px 64px; }
+.head { display: flex; align-items: flex-end; justify-content: space-between; position: relative; z-index: 2; }
+.head .t { font-size: 34px; font-weight: 700; letter-spacing: -.01em; }
+.head .s { font-size: 14px; color: #8D97A8; margin-top: 9px; }
+.head .r { font-size: 12px; color: #6E7889; letter-spacing: .12em; text-transform: uppercase; }
+.grid2 { position: relative; z-index: 2; margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.f { display: flex; flex-direction: column; gap: 11px; padding: 24px; border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); }
+.f .ico { width: 38px; height: 38px; border-radius: 11px; background: rgba(68,126,253,.16);
+           border: 1px solid rgba(68,126,253,.34); display: flex; align-items: center; justify-content: center; color: #7FA6FF; }
+.f h3 { font-size: 16.5px; font-weight: 600; }
+.f p { font-size: 13.2px; line-height: 1.72; color: #98A2B3; }
+.f .k { margin-top: auto; display: flex; gap: 7px; flex-wrap: wrap; }
+.f .k span { font-size: 11px; color: #8FA3C8; border: 1px solid rgba(255,255,255,.09); padding: 3px 8px; border-radius: 6px; }
+.foot { position: relative; z-index: 2; margin-top: 26px; font-size: 12px; color: #5E6980; }
+</style></head><body><div class="stage">
+  <div class="grid"></div>
+  <div class="head"><div><div class="t">Core capabilities</div><div class="s">One continuous workflow, from folder to product asset</div></div><div class="r">Features</div></div>
+  <div class="grid2"><div class="f"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><h3>Keep them findable</h3><p>Filter by project and runtime status, search by name, and give every prototype a thumbnail — auto-detected, uploaded, or captured with headless Chrome.</p><div class="k"><span>Filters</span><span>Search</span><span>Thumbnails</span></div></div><div class="f"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5v14l11-7z"/></svg></div><h3>Run and preview in a click</h3><p>Vite projects pick a free port automatically and static prototypes use the built-in server. Dependencies are checked and installed when missing; preview at desktop or mobile width.</p><div class="k"><span>Auto port</span><span>Dependency check</span><span>Responsive preview</span></div></div><div class="f"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div><h3>Version with Git</h3><p>Connect a remote, search and switch branches, create a branch from the current, another local, or a remote branch, then commit or commit and push.</p><div class="k"><span>Branch search</span><span>Base branch</span><span>Commit & push</span></div></div><div class="f"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg></div><h3>Iterate with AI</h3><p>Type @ in DSH chat and pick a prototype — its folder, current branch, and repository come along, so AI can pick up exactly where you left off.</p><div class="k"><span>@ mentions</span><span>Context attached</span></div></div></div>
+  <div class="foot">Local-first · data stored in $DSH_HOME/prototype-library/</div>
+</div></body></html>
