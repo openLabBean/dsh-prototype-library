@@ -833,6 +833,10 @@ window.__ModuleLoader__.load({
 .pl-seg button.is-active { background: var(--dsw-alias-bg-layer-1); color: var(--dsw-alias-label-primary); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
 .pl-divider { height: 1px; background: var(--dsw-alias-border-l2); margin: 2px 0; }
 .pl-actions-row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.pl-meta-row { min-height: 34px; }
+.pl-meta-row .pl-chip { height: 24px; }
+.pl-meta-row .pl-code { display: inline-block; height: 34px; padding: 0 8px; font-size: 12px; line-height: 32px; box-sizing: border-box; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.pl-meta-row .pl-btn { height: 34px; }
 .pl-chip { display: inline-flex; align-items: center; gap: 4px; height: 21px; padding: 0 7px; border-radius: 999px; background: var(--dsw-alias-bg-base); border: 1px solid var(--dsw-alias-border-l2); color: var(--dsw-alias-label-secondary); font-size: 11px; }
 .pl-chip-warn { color: var(--dsw-alias-state-warning-primary); }
 .pl-chip-ok { color: var(--dsw-alias-state-success-primary); }
@@ -1767,10 +1771,10 @@ window.__ModuleLoader__.load({
                     ),
                     h(
                       'div',
-                      { className: 'pl-actions-row' },
+                      { className: 'pl-actions-row pl-meta-row' },
                       h('span', { className: 'pl-chip' }, kindLabel(prototype.kind)),
                       h('code', { className: 'pl-code', style: { overflow: 'hidden', textOverflow: 'ellipsis', minWidth: 0, flex: '0 1 auto' }, title: prototype.dir }, prototype.dir),
-                      h(Button, { size: 'sm', icon: 'folder', onClick: openDir }, t('openDir')),
+                      h(Button, { icon: 'folder', onClick: openDir }, t('openDir')),
                     ),
                   ),
                   h(
